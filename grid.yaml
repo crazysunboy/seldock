@@ -1,0 +1,19 @@
+services:
+  hub:
+    image: selenium/hub:4.45.0
+  chrome:
+    image: selenium/node-chromium:149.0-20260606
+    shm_size: '2g'
+    depends_on:
+    - hub
+    deploy:
+      replicas: 1
+    env_file: gridvariables.env
+  firefox:
+    image: selenium/node-firefox:152.0-20260606
+    shm_size: '2g'
+    depends_on:
+    - hub
+    deploy:
+      replicas: 1
+    env_file: gridvariables.env
